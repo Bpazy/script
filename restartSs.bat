@@ -1,3 +1,3 @@
 taskkill /f /im Shadowsocks.exe
-cd D:\Program Files (x86)\shadowsocks
+cd D:\Program Files\shadowsocks
 start Shadowsocks.exe
