@@ -7,7 +7,7 @@ for (const weibo of weiboList) {
     // Get weibo sender's name
     const nameEle = weibo.querySelector('.W_f14.W_fb.S_txt1')
     if (!nameEle) continue
-    let name = nameEle.text.trim()
+    const name = nameEle.text.trim()
     if (!name || name === 'who you want to skip') continue;
 
     // Get "like" button
