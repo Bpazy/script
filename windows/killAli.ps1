@@ -6,6 +6,7 @@ If (-NOT ([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdenti
 }
 
 wmic process where "name='AlibabaProtect.exe'" delete
+wmic process where "name='EntSafeSvr.exe'" delete
 taskkill /t /f /im AliLangClient.exe
 taskkill /t /f /im AliGuardImplementModule.exe
 taskkill /t /f /im AliLang.exe
