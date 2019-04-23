@@ -11,3 +11,4 @@ taskkill /t /f /im AliLangClient.exe
 taskkill /t /f /im AliGuardImplementModule.exe
 taskkill /t /f /im AliLang.exe
 taskkill /t /f /im AlibabaprotectUI.exe
+taskkill /t /f /im EntSafeUI.exe
