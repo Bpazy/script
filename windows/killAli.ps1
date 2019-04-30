@@ -22,6 +22,9 @@ $run = 'HKCU:\Software\Microsoft\Windows\CurrentVersion\Run\'
 Remove-ItemProperty $run AliLang # TODO permission denided
 Remove-ItemProperty $run AliLangClient
 
+$run2 = 'HKLM:\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Run'
+Remove-ItemProperty $run2 CloudshellUI
+
 $service = 'HKLM:\SYSTEM\CurrentControlSet\Services'
 Remove-Item -Force -recurse $service\AlibabaProtect
 Remove-Item -Force -recurse $service\alilangprot
