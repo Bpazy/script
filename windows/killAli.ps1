@@ -30,7 +30,7 @@ Remove-Item -Force -recurse $service\AliPaladin
 Remove-Item -Force -recurse $service\AliSystemSrv
 Remove-Item -Force -recurse $service\DsFs
 Remove-Item -Force -recurse $service\Dsns
-Remove-Item -Force -recurse $service\EntSafeSvr
+Remove-Item -Force -recurse $service\EntSafeSvr # TODO: Add pause feature. Now is uninstall
 
 $outlook = 'HKEY_CURRENT_USER\Software\Microsoft\Office\Outlook\Addins\'
 Remove-Item -Force -recurse $outlook\DlpOutlookAddin.DlpOutlookSensor
