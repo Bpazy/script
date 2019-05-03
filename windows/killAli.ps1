@@ -8,7 +8,7 @@ wmic process where "name='AlibabaProtect.exe'" delete
 wmic process where "name='EntSafeSvr.exe'" delete
 
 Write-Output 'Kill the processes'
-$processes = @("AliLang.exe", "AliLangDaemon.exe", "AliLangClient.exe" <#TODO permission denided#>, 
+$processes = @("AliLang.exe", "AliLangDaemon.exe", "AliLangClient.exe" <# FIXME: permission denided#>, 
     "AliGuardImplementModule.exe", "AlibabaprotectUI.exe", "EntSafeUI.exe")
 foreach ($process in $processes) {
     taskkill /t /f /im $process
@@ -16,13 +16,14 @@ foreach ($process in $processes) {
 
 Write-Output 'Clean the autorun registry'
 $run = 'HKCU:\Software\Microsoft\Windows\CurrentVersion\Run\'
-Remove-ItemProperty $run AliLang # TODO permission denided
+Remove-ItemProperty $run AliLang # FIXME: permission denided
 Remove-ItemProperty $run AliLangClient
 
 $run2 = 'HKLM:\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Run'
 Remove-ItemProperty $run2 CloudshellUI
 
 If ($args[0] -eq 'pause') {
+    # FIXME: protect process will resume these services
     $service = 'HKLM:\SYSTEM\CurrentControlSet\Services'
     Set-ItemProperty "$service\AlibabaProtect" -name Start -value 4
     Set-ItemProperty "$service\alilangprot" -name Start -value 4
@@ -41,7 +42,7 @@ If ($args[0] -eq 'uninstall') {
     Remove-Item -Force -recurse $service\AliSystemSrv
     Remove-Item -Force -recurse $service\DsFs
     Remove-Item -Force -recurse $service\Dsns
-    Remove-Item -Force -recurse $service\EntSafeSvr # TODO: Add pause feature. Now is uninstall
+    Remove-Item -Force -recurse $service\EntSafeSvr
 
     $outlook = 'HKEY_CURRENT_USER\Software\Microsoft\Office\Outlook\Addins\'
     Remove-Item -Force -recurse $outlook\DlpOutlookAddin.DlpOutlookSensor
