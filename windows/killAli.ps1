@@ -1,5 +1,4 @@
-If (-NOT ([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole] "Administrator"))
-{   
+If (-NOT ([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole] "Administrator")) {   
     $arguments = "& '" + $myinvocation.mycommand.definition + "'"
     Start-Process powershell -Verb runAs -ArgumentList $arguments
     Break
@@ -10,12 +9,11 @@ wmic process where "name='AlibabaProtect.exe'" delete
 wmic process where "name='EntSafeSvr.exe'" delete
 
 Write-Output 'Kill the processes'
-taskkill /t /f /im AliLang.exe
-taskkill /t /f /im AliLangDaemon.exe
-taskkill /t /f /im AliLangClient.exe # TODO permission denided
-taskkill /t /f /im AliGuardImplementModule.exe
-taskkill /t /f /im AlibabaprotectUI.exe
-taskkill /t /f /im EntSafeUI.exe
+$processes = @("AliLang.exe", "AliLangDaemon.exe", "AliLangClient.exe" <#TODO permission denided#>, 
+    "AliGuardImplementModule.exe", "AlibabaprotectUI.exe", "EntSafeUI.exe")
+foreach ($process in $processes) {
+    taskkill /t /f /im $process
+}
 
 Write-Output 'Clean the registry'
 $run = 'HKCU:\Software\Microsoft\Windows\CurrentVersion\Run\'
@@ -32,6 +30,7 @@ Remove-Item -Force -recurse $service\AliPaladin
 Remove-Item -Force -recurse $service\AliSystemSrv
 Remove-Item -Force -recurse $service\DsFs
 Remove-Item -Force -recurse $service\Dsns
+Remove-Item -Force -recurse $service\EntSafeSvr
 
 $outlook = 'HKEY_CURRENT_USER\Software\Microsoft\Office\Outlook\Addins\'
 Remove-Item -Force -recurse $outlook\DlpOutlookAddin.DlpOutlookSensor
