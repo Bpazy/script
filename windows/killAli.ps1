@@ -9,7 +9,7 @@ wmic process where "name='EntSafeSvr.exe'" delete
 
 Write-Output 'Kill the processes'
 $processes = @("AliLang.exe", "AliLangDaemon.exe", "AliLangClient.exe" <# FIXME: permission denided#>, 
-    "AliGuardImplementModule.exe", "AlibabaprotectUI.exe", "EntSafeUI.exe")
+    "AliGuardImplementModule.exe", "AlibabaprotectUI.exe", "EntSafeUI.exe", "kvoop.exe", "RiskMon.exe")
 foreach ($process in $processes) {
     taskkill /t /f /im $process
 }
