@@ -25,13 +25,13 @@ Remove-ItemProperty $run2 CloudshellUI
 If ($args[0] -eq 'pause') {
     # FIXME: protect process will resume these services
     $service = 'HKLM:\SYSTEM\CurrentControlSet\Services'
-    Set-ItemProperty "$service\AlibabaProtect" -name Start -value 4
-    Set-ItemProperty "$service\alilangprot" -name Start -value 4
-    Set-ItemProperty "$service\AliPaladin" -name Start -value 4
-    Set-ItemProperty "$service\AliSystemSrv" -name Start -value 4
-    Set-ItemProperty "$service\DsFs" -name Start -value 4
-    Set-ItemProperty "$service\Dsns" -name Start -value 4
-    Set-ItemProperty "$service\EntSafeSvr" -name Start -value 4
+    Set-ItemProperty "$service\AlibabaProtect" -name Start -value 3
+    Set-ItemProperty "$service\alilangprot" -name Start -value 3
+    Set-ItemProperty "$service\AliPaladin" -name Start -value 3
+    Set-ItemProperty "$service\AliSystemSrv" -name Start -value 3
+    Set-ItemProperty "$service\DsFs" -name Start -value 3
+    Set-ItemProperty "$service\Dsns" -name Start -value 3
+    Set-ItemProperty "$service\EntSafeSvr" -name Start -value 3
 }
 
 If ($args[0] -eq 'uninstall') {
