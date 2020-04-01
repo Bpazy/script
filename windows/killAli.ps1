@@ -6,10 +6,11 @@ If (-NOT ([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdenti
 Write-Output 'Stop the services' 
 wmic process where "name='AlibabaProtect.exe'" delete
 wmic process where "name='EntSafeSvr.exe'" delete
+wmic process where "name='AliedrSrv.exe'" delete
 
 Write-Output 'Kill the processes'
 $processes = @("AliLang.exe", "AliLangDaemon.exe", "AliLangClient.exe" <# FIXME: permission denided#>, 
-    "AliGuardImplementModule.exe", "AlibabaprotectUI.exe", "EntSafeUI.exe", "kvoop.exe", "RiskMon.exe")
+    "AliGuardImplementModule.exe", "AlibabaprotectUI.exe", "EntSafeUI.exe", "kvoop.exe", "RiskMon.exe", "OneAgent.exe")
 foreach ($process in $processes) {
     taskkill /t /f /im $process
 }
