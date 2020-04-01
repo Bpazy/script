@@ -53,5 +53,10 @@ If ($args[0] -eq 'uninstall') {
     Remove-ItemProperty HKLM:\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Explorer\ShellExecuteHooks\ $aliLangOverIconId
 }
 
+# TODO: 任务计划：
+#   1. AliEdrSrvRestart。描述：重启 AliedrSrv.exe
+#   2. AliEdrSrvStartSrv。描述：启动 AliedrSrv.exe
+#   3. CloudshellSvrCheckAndRestartTask。描述：Used for Cloudshell service inspection and restart
+
 Write-Output 'Done'
 pause
